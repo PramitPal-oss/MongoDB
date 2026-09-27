@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "mongodb": "^6.16.0"
+  }
+}

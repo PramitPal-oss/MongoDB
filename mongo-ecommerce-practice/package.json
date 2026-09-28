@@ -1,0 +1,14 @@
+{
+  "name": "mongo-ecommerce-practice",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "node seed.mjs"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0",
+    "bson": "^6.0.0",
+    "mongodb": "^6.0.0"
+  },
+  "engines": { "node": ">=20.19.0" }
+}

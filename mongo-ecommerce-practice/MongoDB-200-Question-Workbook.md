@@ -1,6 +1,6 @@
 # MongoDB Ecommerce: 200-Question Interview Workbook
 
-This workbook uses the 16-collection `ecommerce_practice` dataset. Work in `mongosh`. Questions deliberately have **no solutions** so you can solve them yourself. Write the query, run it, and explain *why* it works. Difficulty: **E** = easy, **M** = medium, **H** = hard.
+This workbook uses the 16-collection `ecommerce_practice` dataset. Work in `mongosh`. Questions deliberately have **no solutions** so you can solve them yourself. Write the query, run it, and explain _why_ it works. Difficulty: **E** = easy, **M** = medium, **H** = hard.
 
 ## Before you start
 
@@ -18,13 +18,13 @@ For each question, save: (1) your query, (2) a sample result, (3) one sentence e
 ### Ten-minute syntax refresher
 
 ```javascript
-db.customers.findOne({ email: "customer0@example.test" })
-db.customers.find({ status: "ACTIVE" }, { email: 1, _id: 0 }).limit(5)
-db.customers.countDocuments({ status: "ACTIVE" })
-db.customers.updateOne({ email: "customer0@example.test" }, { $set: { "preferences.marketingOptIn": true } })
-db.orders.aggregate([{ $match: { status: "DELIVERED" } }, { $group: { _id: "$currency", orders: { $sum: 1 } } }])
-db.orders.find({ customerId: ObjectId("000100000000000000000000") })
-db.orders.find({ "totals.grandTotal": { $gte: NumberDecimal("10000.00") } })
+db.customers.findOne({ email: 'customer0@example.test' });
+db.customers.find({ status: 'ACTIVE' }, { email: 1, _id: 0 }).limit(5);
+db.customers.countDocuments({ status: 'ACTIVE' });
+db.customers.updateOne({ email: 'customer0@example.test' }, { $set: { 'preferences.marketingOptIn': true } });
+db.orders.aggregate([{ $match: { status: 'DELIVERED' } }, { $group: { _id: '$currency', orders: { $sum: 1 } } }]);
+db.orders.find({ customerId: ObjectId('000100000000000000000000') });
+db.orders.find({ 'totals.grandTotal': { $gte: NumberDecimal('10000.00') } });
 ```
 
 `find()` reads documents; the second argument is a projection. `$` introduces query, update, or aggregation operators depending on context. Dot notation addresses nested paths. `ObjectId`, `NumberDecimal`, and `ISODate` are constructors in `mongosh`. An aggregation is an ordered array of stages; inspect intermediate results while learning. Run write examples in your lab copy.
@@ -54,12 +54,12 @@ db.orders.find({ "totals.grandTotal": { $gte: NumberDecimal("10000.00") } })
 
 ## 2. Filters, arrays, and operators (21–40)
 
-21. **[E]** Find customers who opted into marketing and have a `GOLD` loyalty tier.
-22. **[E]** Find customers with loyalty points between 500 and 1,000 inclusive.
-23. **[E]** Find products with status in `ACTIVE` or `DRAFT`.
-24. **[E]** Find orders whose grand total is at least `NumberDecimal("25000.00")`.
-25. **[E]** Find products with `16` GB of technical memory.
-26. **[M]** Find customers whose `preferences.favoriteCategories` contains a category `_id` you selected.
+21. **[E ✅]** Find customers who opted into marketing and have a `GOLD` loyalty tier.
+22. **[E ✅]** Find customers with loyalty points between 500 and 1,000 inclusive.
+23. **[E ✅]** Find products with status in `ACTIVE` or `DRAFT`.
+24. **[E ✅]** Find orders whose grand total is at least `NumberDecimal("25000.00")`.
+25. **[E ✅]** Find products with `16` GB of technical memory.
+26. **[M ✅]** Find customers whose `preferences.favoriteCategories` contains a category `_id` you selected.
 27. **[M]** Find orders whose `lines.discounts` array is nonempty. Do not accidentally include missing arrays.
 28. **[M]** Find orders with a line discount whose code begins with `PROMO-1`.
 29. **[M]** Find shipments with a `trackingEvents` entry whose `code` is `IN_TRANSIT`.
@@ -142,7 +142,7 @@ db.orders.find({ "totals.grandTotal": { $gte: NumberDecimal("10000.00") } })
 97. **[H]** Implement optimistic concurrency for inventory with `version`: two writers both read version 17; only one should succeed.
 98. **[H]** Use an update pipeline to compute and store `available = onHand - reserved - damaged` for a selected inventory document.
 99. **[H]** Recompute an order's `totals.grandTotal` from its stored totals using an update pipeline in your lab copy. Explain why changing a historical total needs audit controls.
-100. **[H]** Design an idempotent operation to append a status-history event exactly once for a given event ID. What happens when the same request is retried?
+100.  **[H]** Design an idempotent operation to append a status-history event exactly once for a given event ID. What happens when the same request is retried?
 
 ## 6. Aggregation foundations (101–120)
 

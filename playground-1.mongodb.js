@@ -5,6 +5,12 @@
 // The current database to use.
 use('ecommerce_practice');
 
-// [E] Find products whose first variant's sale price is greater than NumberDecimal("15000.00").
+// [M] Find orders whose lines.discounts array is nonempty. Do not accidentally include missing arrays
 
-db.products.find({ 'variants.0.pricing.salePrice': { $gt: NumberDecimal('15000.00') } });
+db.orders.find({
+  lines: {
+    $elemMatch: {
+      'discounts.0': { $exists: true },
+    },
+  },
+});
